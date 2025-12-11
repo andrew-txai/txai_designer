@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TxAI Designer — Starter</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo"><span>TX</span>TxAI Designer</div>
+    <nav>
+      <button id="installBtn" class="btn small">Install</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>TxAI Designer</h1>
+      <p>Design smarter. Repeat faster. Textile + Fashion design tools — pattern lab, fabric calculator, color lab, AI tutor.</p>
+      <div class="quick-actions">
+        <button class="btn" id="newProject">New Project</button>
+        <button class="btn outline" id="openPattern">Pattern Lab</button>
+        <button class="btn outline" id="openCalc">Fabric Calculator</button>
+      </div>
+    </section>
+
+    <section id="workspace" class="workspace">
+      <aside class="sidebar">
+        <h3>Tools</h3>
+        <ul>
+          <li><button class="tool" data-tool="pattern">Pattern Lab</button></li>
+          <li><button class="tool" data-tool="color">Color Lab</button></li>
+          <li><button class="tool" data-tool="fabric">Fabric Lab</button></li>
+          <li><button class="tool" data-tool="mood">Moodboard</button></li>
+          <li><button class="tool" data-tool="ai">AI Tutor</button></li>
+        </ul>
+      </aside>
+
+      <section class="editor" id="editor">
+        <!-- Pattern Lab -->
+        <div class="panel" id="panel-pattern">
+          <h2>Pattern Lab</h2>
+          <label>TxAI Designer Input: Prompt</label>
+          <input id="patternPrompt" placeholder="e.g. African geometric, blue & gold, medium repeat" />
+          <div class="row">
+            <label>Repeat size (cm)</label>
+            <input type="number" id="repeatSize" value="16" min="1" />
+            <label>Pattern Type</label>
+            <select id="patternType">
+              <option value="straight">Straight</option>
+              <option value="half-drop">Half-drop</option>
+              <option value="brick">Brick</option>
+              <option value="mirror">Mirror</option>
+            </select>
+          </div>
+          <div class="row">
+            <label>Upload sketch</label>
+            <input type="file" id="sketchFile" accept="image/*" />
+          </div>
+          <div class="actions">
+            <button class="btn" id="generatePattern">Generate (placeholder)</button>
+            <button class="btn outline" id="exportPattern">Export SVG</button>
+          </div>
+          <div id="patternResult" class="result">No pattern yet — generate to preview.</div>
+        </div>
+
+        <!-- Color Lab -->
+        <div class="panel hidden" id="panel-color">
+          <h2>Color Lab</h2>
+          <label>Choose base color</label>
+          <input type="color" id="baseColor" value="#2e3a8c" />
+          <div class="row">
+            <button class="btn" id="generatePalette">Generate Palette</button>
+          </div>
+          <div id="paletteResult" class="result"></div>
+        </div>
+
+        <!-- Fabric Lab -->
+        <div class="panel hidden" id="panel-fabric">
+          <h2>Fabric Lab — Yarn & Fabric Analyzer</h2>
+          <div class="row">
+            <label>Warp Yarn (Ne/Tex)</label><input id="warpYarn" placeholder="30 Ne" />
+            <label>Weft Yarn (Ne/Tex)</label><input id="weftYarn" placeholder="40 Ne" />
+          </div>
+          <div class="row">
+            <label>EPI</label><input id="epi" type="number" value="100" />
+            <label>PPI</label><input id="ppi" type="number" value="80" />
+          </div>
+          <div class="actions">
+            <button class="btn" id="analyzeFabric">Analyze</button>
+          </div>
+          <pre id="fabricResult" class="result"></pre>
+        </div>
+
+        <!-- Moodboard / AI Tutor -->
+        <div class="panel hidden" id="panel-mood">
+          <h2>Moodboard</h2>
+          <p>Upload images to create moodboards (placeholder)</p>
+          <input type="file" id="moodFiles" multiple accept="image/*" />
+          <div id="moodPreview" class="result"></div>
+        </div>
+
+        <div class="panel hidden" id="panel-ai">
+          <h2>AI Textile Tutor</h2>
+          <label>Ask a question (TxAI Designer Input)</label>
+          <input id="aiQuestion" placeholder="e.g. What is GSM and how to calculate it?" />
+          <div class="row">
+            <button class="btn" id="askAI">Ask</button>
+          </div>
+          <div id="aiAnswer" class="result">AI answers appear here (MVP: canned responses)</div>
+        </div>
+
+      </section>
+    </section>
+
+    <footer class="footer">
+      <small>TxAI Designer — Starter PWA • Made for Andrew</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
